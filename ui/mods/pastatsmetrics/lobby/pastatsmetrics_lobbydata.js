@@ -38,20 +38,16 @@ function SendList(){
 
   //counter for debugger
   console.log("pastatsmetrics counter", model.startingGameCountdown());
-  if(model.startingGameCountdown() == 5){ //==5
+  if(model.startingGameCountdown() != 5){ //==5
 
-    // deep shit custom id which is not the same for all players, need to be changed
-    var nowUTC = new Date().toISOString();
-    var dateUTC = nowUTC.slice(0, 10) + ' ' + nowUTC.slice(11, 16); //day hourminutes in UTC
-    
-    console.log("testbite", custom_server_mods_list);
-    var my_id = JSON.stringify(player_list) + dateUTC // the lobbyid in the Database is gonna be the sha 256 of this string, the playerlist can be reversed for 2 different player, need to check
+    var nowUTC = new Date().toISOString().replace('T', ' ').replace(/\..+/, '') + ' UTC';
+    //var dateUTC = nowUTC.slice(0, 10) + ' ' + nowUTC.slice(11, 16); //day hourminutes in UTC
+    var my_id = JSON.stringify(player_list) + nowUTC // the lobbyid in the Database is gonna be the sha 256 of this string, the playerlist can be reversed for 2 different player, need to check
+    console.log(nowUTC);
     if(isLocal){
       model.lobbyId(my_id);
       localStorage.lobbyId = model.lobbyId();
     }
-
-
     console.log("pastatsmetrics is SENDING DATA");
     var ip = "192.168.0.13";
     var url = "http://pastatsmetrics.com/pastats/paview"; //"http://"+ ip + ":8000/main_isyw/paview";
@@ -89,15 +85,16 @@ function SendList(){
     for(var i = 0; i< ls_specs.length;i++){
       if(ls_specs[i]["id"] == uberid){ // IF CURRENT PLAYER IS IN SPEC when the game starts
         current_player_is_spectating = true;
-    } }
+      }
+    }
 
     if(!current_player_is_spectating){ // IF NOT then we can send the lobbydata
-      console.log("before");
+      console.log("before sending data");
       //$.post(url, report_string);
       //$.post("http://192.168.1.103:8000/pastats/paview", report_string);
       //$.post("http://192.168.1.119:8000/pastats/paview", report_string);
       //$.post("http://192.168.32.1:8000/pastats/paview", report_string);
-      console.log("after");
+      console.log("after sending data");
     }
   }
   return

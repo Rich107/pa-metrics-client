@@ -1,3 +1,43 @@
+function bs(){}
+if(!model.ranked()){
+  setTimeout(bs, 5000);
+
+  //bon en fait player list c'est model.playerData()
+  var player_list = {};
+  console.log("bite",model.playerListState()["players"].length);
+  for(var i = 0; i<model.playerListState()["players"].length;i++){
+    console.log("what the fuck", model.playerListState()["players"][i]["name"]);
+    player_list[model.playerListState()["players"][i]["name"]] = playerlist[model.playerListState()["players"][i]["colors"]];
+  }
+  console.log("playerlist", JSON.stringify(player_list));
+
+
+  var planets_biomes = {};
+  for(var i = 0; i<model.planetListState()["planets"].length;i++){
+    planets_biomes.push(model.planetListState()["planets"][i]["biome"]);
+  }
+  var ranked_report = {
+    is_lobby_data: true,
+    lobby_id: model.lobbyId(),
+    game_name: "1v1 Ranked",
+    is_Local: false,
+    is_Public: true,
+    is_FriendsOnly: false,
+    is_Hidden: false,
+    is_Titan: true,
+    user_name: "None",
+    server_mods: [],
+    player_list: JSON.stringify(player_list),
+    planets_biomes: JSON.stringify(planets_biomes),
+    uber_id: model.uberId(), 
+  };
+
+  var report_string = JSON.stringify(ranked_report);
+  //$.post(url, report_string);
+}
+
+
+console.log(model.playerListState()["players"].length);
 var EcoData = []; 
 var TimeInSeconds = 0;
 var KillData = [];
@@ -35,55 +75,11 @@ self.apmFrequency = 1 * 1000; //each sec
 self.keyPressCount = 0; 
 self.currentApm = 0;
 
-
-//-------------- CODE DE CAMERA-  ------------
-console.log("-------------- CODE DE camera -------------");
-var units = [] ;
-var ballec = "";
-var ic = 0;
-(function(){
-
-  var autoto = function(){
-    if (!_.isEmpty(GameOverData[1])){
-      //console.log("game iover",camera_coords);
-      
-      //console.log("game sdfsdfiover");
-      if(ic < camera_coords.length){
-        var target = {};
-        target.planet_id = 0;
-        target.location = camera_coords[ic];
-        target.zoom = "air"; //surface air orbital celestial
-        //console.log(camera_coords, "HEEEEEEEEEEY");
-        //api.camera.lookAt(target, true);
-        //api.camera.getFocus(1).planet()
-        ic += 1;
-      }
-    }
-    else {
-      //console.log("ouaisouaisouais", api.camera.getFocus(1)["location"]());
-    
-      xc = api.camera.getFocus(1)["location"]()["x"];
-      yc = api.camera.getFocus(1)["location"]()["y"];
-      zc = api.camera.getFocus(1)["location"]()["z"];
-      const currentPosition = { x: xc, y: yc, z: zc };
-      //const targetPosition = { x: 379.42, y: -146.62, z: 506.90 };
-      //console.log(api.camera.getFocus(1).planet(),TimeInSeconds[0], currentPosition);
-      camera_coords.push([api.camera.getFocus(1).planet(),TimeInSeconds[0], currentPosition]);
-      //console.log(camera_coords, "HEEEsdsdsdsdsdsdsdsdsdsdsdEEEEEEEY");
-
-    }
-
-  }
-
-  setInterval(autoto, 200);
-})();
-
-//----------------------------------------
-
 function toUTCStringAlternative() {
     var date = new Date();
     var isoString = date.toISOString();
     var utcString = isoString.replace('T', ' ').replace(/\..+/, '') + ' UTC';
+
     return utcString;
 };
 
@@ -239,6 +235,7 @@ var allIds = [];
     //var camera_location = api.camera.getFocus(1)["location"];
     //camera_data = {camera_planet : camera_location};
     console.log("teub", Testme);
+    console.log(model.playerListState()["players"].length);
     var report = {
       is_lobby_data: false,
       game_state: JSON.stringify(GameOverData[0]),

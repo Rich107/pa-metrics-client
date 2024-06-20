@@ -1,3 +1,5 @@
+// ce fichier est ridicule on ne peut register une ranked que in game, rien de spécial dans le lobby e nfait
+//fichier qui doit etre delete et juste on le garde là pour pouvoir resetup un lobby une fois IG
 //console.log("hello");
 //var my_lobbyid = "";
 model.my_lobbyid = ko.observable(-1).extend({ session: 'lobbyId' });
@@ -13,29 +15,15 @@ function SendList(){
         }
     }
   }
-
-  //game_name = model.gameName();
-  //server_mods = model.serverMods();
-  //isFFA = model.isFFAGame();
-  //isTeamGame = model.isTeamGame();
-  //isLocal = model.isLocalGame();
-  //isPublic = model.isPublicGame();
-  //isFriendsOnly = model.isFriendsOnlyGame();
-  //isHidden = model.isHiddenGame();
-  //isTitan = model.isTitansGame();
-  //username = model.username();
-  //is_sandbox= model.sandbox();
-  //planetsBiomes = model.planetBiomes();
   var isRanked = true;
-
-  /*var tt = ""
-  for(var i = 0;i<Object.keys(server_mods).length; i++){
-    tt += ":::" + server_mods[i]["display_name"];
-  }*/
   
-  console.log("HEYYY", model.startingGameCountdown())
   if(model.startingGameCountdown() == 5){
+    // no lobbyid in lobby for ranked so gotta make one fake for regsitering the game and then replacing with the real one
     var my_id = (Math.floor(Math.random() * 100000000000000000000)).toFixed().toString() + (Math.floor(Math.random() * 1000000000000)).toFixed().toString();
+    
+    var nowUTC = new Date().toISOString();
+    var dateUTC = nowUTC.slice(0, 10) + ' ' + nowUTC.slice(11, 16); //day hourminutes in UTC
+    var my_id = JSON.stringify(player_list) + dateUTC
     console.log("avant")
     if(isRanked){
       model.my_lobbyid(my_id);
