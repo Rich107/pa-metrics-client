@@ -10,8 +10,8 @@ It records stats of your games and save them in a database, so you can check you
 	- Units & Buildings type and numbers (so basically what you build and how many of them you have over the game).
 	- Legion, 2nd Wave, Bugs, Thorosmen are on the TO DO LIST for support
 - EconomyData:
-	- currenttime
-	- APM (Real one, copied from superstats, yes it's not economy byut it's recorded at the same time)
+	- current_time
+	- APM (Real one, copied from superstats, yes it's not economy but it's recorded at the same time)
 	- Energy :
 		- energy_gain
 		- energy_loss
@@ -37,7 +37,7 @@ It records stats of your games and save them in a database, so you can check you
 - PlayerData:
 	- uber_id
 	- player_name
-	- daten_ame
+	- date_name
 - GameHistory:
 	- lobby_id
 	- uber_id
