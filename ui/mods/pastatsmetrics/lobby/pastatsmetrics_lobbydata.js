@@ -68,11 +68,13 @@ function SendList(){
       is_FriendsOnly: model.isFriendsOnlyGame(),
       is_Hidden: model.isHiddenGame(),
       is_Titan: model.isTitansGame(),
+      is_Ranked: false,
       user_name: model.username(), // not sure if this one is always accurate, PA has bugs, supposed to be steam name
       server_mods: custom_server_mods_list,
       player_list: JSON.stringify(player_list),
       planets_biomes: model.planetBiomes(),
       uber_id: model.uberId(),
+      the_date: nowUTC,
     };
     var report_string = JSON.stringify(report); // data send as a string containing a JSON
   
