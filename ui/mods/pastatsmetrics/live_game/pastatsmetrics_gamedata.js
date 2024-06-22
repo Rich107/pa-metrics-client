@@ -39,6 +39,9 @@ var keypressed = [];
 var myUnitsIds = [];
 var gameover_sent = 4;
 
+//var metalProduced = [0]
+//var energyProduced = [0]
+
 var metallost = []
 var metaldestroy = []
 
@@ -135,7 +138,7 @@ var allIds = [];
         pnamelist.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
       }
     }
-
+    
     var report = {
       is_lobby_data: false,
       game_state: JSON.stringify(GameOverData[0]),
@@ -148,7 +151,7 @@ var allIds = [];
       lobby_id: lobby_id,
       eco_data: EcoData,
       kill_data: KillData,
-      time_in_seconds: TimeInSeconds,
+      time_in_seconds: Math.floor(TimeInSeconds),
       unb_data: unb_get,
       is_galacticwar: model.gameOptions.isGalaticWar(), // yes game has a typo error it's galatic and not galactic
       is_ladder1v1: model.gameOptions.isLadder1v1(),
@@ -158,9 +161,10 @@ var allIds = [];
       is_dynamic_alliances: model.gameOptions.dynamic_alliances(),
       dynamic_alliance_victory: model.gameOptions.dynamic_alliance_victory(),
       game_type: model.gameOptions.game_type(),
+      is_AI_game: model.noHumanPlayers(),
       player_list: pnamelist,
     };
-    //console.log("report", report);
+    console.log("DEV DEBUG : ", report);
     var report_string = JSON.stringify(report);
 
     if(!(model.paused()) && !(model.isSpectator()) && !(model.showLanding())){
@@ -225,6 +229,9 @@ handlers.EcoDataAll = function(payload){
   EcoData = payload;
   var metalWinRate = model.enemyMetalDestroyed();
   var metalLossRate = model.metalLost();
+
+  //energyProduced.push(energyProduced[energyProduced.length - 1] + EcoData[0]);
+  //metalProduced.push(metalProduced[metalProduced.length - 1] + EcoData[6]);
 
   EcoData.push(metalWinRate);
   EcoData.push(metalLossRate);
