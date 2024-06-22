@@ -8,7 +8,7 @@ It records stats of your games and save them in a database, so you can check you
 - Data of every single game you play, custom, private, ranked, sandbox anything (Toggle for this is on the TO DO LIST)
 - UnitsBuildingsCount
 	- Units & Buildings type and numbers (so basically what you build and how many of them you have over the game).
-	- Legion, 2nd Wave, Bugs, Thorosmen are on the TO DO LIST for support
+	- Legion, 2nd Wave, Bugs, Thorosmen, S17 are on the TO DO LIST for support
 - EconomyData:
 	- current_time
 	- APM (Real one, copied from superstats, yes it's not economy but it's recorded at the same time)
