@@ -11,7 +11,7 @@
    "priority": 100,
     "scenes": {
         "live_game": [
-            "coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_gamedata.js"
+          "coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_gamedata.js"
         ],
         "live_game_econ": [
           "coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_economy_bar.js"
