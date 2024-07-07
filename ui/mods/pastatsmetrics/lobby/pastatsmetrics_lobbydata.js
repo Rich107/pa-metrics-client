@@ -62,6 +62,9 @@ function SendList(){
     var report = {
       is_lobby_data: true, // used by the server to know if it's lobbydata or livegame data, i could just do 2 different receiving endpath for clarity 
       lobby_id: model.lobbyId(),
+      uber_id: model.uberId(),
+      user_name: model.username(),
+      the_date: nowUTC,
       game_name: game_name_v,
       is_Local: model.isLocalGame(),
       is_Public: model.isPublicGame(),
@@ -69,12 +72,10 @@ function SendList(){
       is_Hidden: model.isHiddenGame(),
       is_Titan: model.isTitansGame(),
       is_Ranked: false,
-      user_name: model.username(), // not sure if this one is always accurate, PA has bugs, supposed to be steam name
+       // not sure if this one is always accurate, PA has bugs, supposed to be steam name
       server_mods: custom_server_mods_list,
       player_list: JSON.stringify(player_list),
       planets_biomes: model.planetBiomes(),
-      uber_id: model.uberId(),
-      the_date: nowUTC,
     };
     var report_string = JSON.stringify(report); // data send as a string containing a JSON
   
