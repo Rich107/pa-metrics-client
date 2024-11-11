@@ -1,11 +1,13 @@
 // for a ranked game we have zero data in the lobby so gotta do it here, especially the lobbyid available only here
 setTimeout(function() {
   if (model.gameOptions.isLadder1v1()) {
-    pnamelist2 = [];
+    pnamelist2 = {};
     var test = model.playerListState();
     for(var i = 0; i < test["players"].length;i++){
       for(var j = 0; j < test["players"][i]["slots"].length;j++){
-        pnamelist2.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
+        var player_name_string = test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`")
+        pnamelist2[player_name_string] = ["0123456789", test["players"][i]["primary_color"]];
+        //.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
       }
     }
     var planets_biomes = [];
@@ -30,7 +32,6 @@ setTimeout(function() {
       uber_id: model.uberId(),
       the_date: toUTCStringAlternative(),
     };
-
     var report_string = JSON.stringify(ranked_report);
     $.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
   } else {
@@ -38,7 +39,6 @@ setTimeout(function() {
   }
 }, 1000);
 my_current_time = 0;
-console.log("jadoreleQQQQQQQQQQQuwu");
 var EcoData = []; 
 var TimeInSeconds = 0;
 var KillData = [];
