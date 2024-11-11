@@ -72,7 +72,7 @@ function SendList(){
       is_Titan: model.isTitansGame(),
       is_Ranked: false,
       server_mods: custom_server_mods_list || "No server mods",
-      player_list: player_list, //JSON.stringify(player_list),
+      player_list: JSON.stringify(player_list), //JSON.stringify(player_list),
       planets_biomes: model.planetBiomes(),
     };
     var report_string = JSON.stringify(report); // data send as a string containing a JSON
@@ -87,6 +87,7 @@ function SendList(){
 
     if(!current_player_is_spectating){ // IF NOT then we can send the lobbydata
       $.post("https://pastatsmetrics.com/pastats/api/lobbydata", report_string);
+      //$.post("http://127.0.0.1:8000/pastats/api/lobbydata", report_string);
     }
   }
   return

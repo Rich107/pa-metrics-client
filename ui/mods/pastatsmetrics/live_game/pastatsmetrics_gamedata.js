@@ -27,13 +27,14 @@ setTimeout(function() {
       is_Ranked: true,
       user_name: "None",
       server_mods: "No server mods",
-      player_list: pnamelist2,
+      player_list: JSON.stringify(pnamelist2),
       planets_biomes: JSON.stringify(planets_biomes),
       uber_id: model.uberId(),
       the_date: toUTCStringAlternative(),
     };
     var report_string = JSON.stringify(ranked_report);
     $.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
+    //$.post("http://127.0.0.1:8000/pastats/api/lobbydata", report_string);
   } else {
     console.log("not ladder uwu");
   }
@@ -145,7 +146,6 @@ var allIds = [];
         pnamelist.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
       }
     }
-
     var has_ai = false;
     for (var i = 0; i < model.players().length; i++) {
       if (model.players()[i].ai === 1) {
@@ -176,18 +176,20 @@ var allIds = [];
       dynamic_alliance_victory: model.gameOptions.dynamic_alliance_victory(),
       game_type: model.gameOptions.game_type(),
       has_game_AI: has_ai,
-      player_list: pnamelist,
+      player_list: JSON.stringify(pnamelist),
     };
     //console.log("DEV DEBUG : ", report);
     var report_string = JSON.stringify(report);
 
     if(!(model.paused()) && !(model.isSpectator()) && !(model.showLanding())){
       $.post("https://pastatsmetrics.com/pastats/api/gamedata", report_string);
+      //$.post("http://127.0.0.1:8000/pastats/api/gamedata", report_string);
     }
 
     if((!_.isEmpty(GameOverData[1])) && gameover_sent<5 && model.isSpectator()){
       gameover_sent +=1;
       $.post("https://pastatsmetrics.com/pastats/api/gamedata", report_string);
+      //$.post("http://127.0.0.1:8000/pastats/api/gamedata", report_string);
     }
         _.delay(dowhile, 5000);
   }
