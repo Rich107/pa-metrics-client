@@ -32,7 +32,7 @@ setTimeout(function() {
   }
 }, 1000);
 
-
+console.log("jadoreleQQQQQQQQQQQuwu");
 var EcoData = []; 
 var TimeInSeconds = 0;
 var KillData = [];

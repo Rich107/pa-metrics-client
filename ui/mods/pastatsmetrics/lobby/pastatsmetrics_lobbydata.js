@@ -38,7 +38,7 @@ function SendList(){
   var current_player_is_spectating = false;
 
   //counter for debugger
-  console.log("pastatsmetrics counter", model.startingGameCountdown());
+  //console.log("pastatsmetrics counter", model.startingGameCountdown());
   if(model.startingGameCountdown() == 5){ //==5
 
     // UTC start date of the game, used to generate a hash which gonna be the lobby_id of local games
