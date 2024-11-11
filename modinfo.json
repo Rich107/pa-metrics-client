@@ -27,11 +27,7 @@
         ],
         "game_over":[
           "coui://ui/mods/pastatsmetrics/game_over/pastatsmetrics_game_over.js"
-        ],
-        "new_game_ladder":[
-          "coui://ui/mods/pastatsmetrics/lobby/pastatsmetrics_ladderlobbydata.js"
         ]
-
 
     },
     "category": ["ui","titans", "in-game"]

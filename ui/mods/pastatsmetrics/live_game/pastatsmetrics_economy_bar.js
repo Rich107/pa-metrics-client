@@ -13,10 +13,6 @@ tout pareil avec model.metal
 
 
 */
-// var Energy_Gain = (function(){
-//   var r = model.energyGain();
-//   return r;
-// })();
 
 function SendEco(){
   var EnergyGain = model.energyGain()

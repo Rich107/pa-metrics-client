@@ -1,31 +1,37 @@
 // for a ranked game we have zero data in the lobby so gotta do it here, especially the lobbyid available only here
-if(!model.ranked()){
-  var player_list = model.playerData();
-  var planets_biomes = {};
-  for(var i = 0; i<model.planetListState()["planets"].length;i++){
-    planets_biomes.push(model.planetListState()["planets"][i]["biome"]);
-  }
-  var ranked_report = {
-    is_lobby_data: true,
-    lobby_id: model.lobbyId(),
-    game_name: "1v1 Ranked",
-    is_Local: false,
-    is_Public: true,
-    is_FriendsOnly: false,
-    is_Hidden: false,
-    is_Titan: true,
-    is_Ranked: true,
-    user_name: "None",
-    server_mods: [],
-    player_list: JSON.stringify(player_list),
-    planets_biomes: JSON.stringify(planets_biomes),
-    uber_id: model.uberId(),
-    the_date: toUTCStringAlternative(),
-  };
+setTimeout(function() {
+  if (model.gameOptions.isLadder1v1()) {
+    console.log("teubeeee");
+    var player_list = model.playerData();
+    var planets_biomes = [];
+    for (var i = 0; i < model.planetListState()["planets"].length; i++) {
+      planets_biomes.push(model.planetListState()["planets"][i]["biome"]);
+    }
 
-  var report_string = JSON.stringify(ranked_report);
-  //$.post(url, report_string);
-}
+    var ranked_report = {
+      is_lobby_data: true,
+      lobby_id: model.lobbyId(),
+      game_name: "1v1 Ranked",
+      is_Local: false,
+      is_Public: true,
+      is_FriendsOnly: false,
+      is_Hidden: false,
+      is_Titan: true,
+      is_Ranked: true,
+      user_name: "None",
+      server_mods: "No server mods",
+      player_list: JSON.stringify(player_list),
+      planets_biomes: JSON.stringify(planets_biomes),
+      uber_id: model.uberId(),
+      the_date: toUTCStringAlternative(),
+    };
+
+    var report_string = JSON.stringify(ranked_report);
+    //$.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
+  } else {
+    console.log("fils de pute de la con de tes morts");
+  }
+}, 1000);
 
 
 var EcoData = []; 
@@ -138,7 +144,13 @@ var allIds = [];
         pnamelist.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
       }
     }
-    
+    var has_ai = false;
+    for (var i = 0; i < model.players().length; i++) {
+      if (model.players()[i].ai === 1) {
+          has_ai = true;
+      }
+    }
+
     var report = {
       is_lobby_data: false,
       game_state: JSON.stringify(GameOverData[0]),
@@ -161,7 +173,7 @@ var allIds = [];
       is_dynamic_alliances: model.gameOptions.dynamic_alliances(),
       dynamic_alliance_victory: model.gameOptions.dynamic_alliance_victory(),
       game_type: model.gameOptions.game_type(),
-      is_AI_game: model.noHumanPlayers(),
+      has_game_AI: has_ai,
       player_list: pnamelist,
     };
     console.log("DEV DEBUG : ", report);
@@ -171,16 +183,17 @@ var allIds = [];
       console.log("WOWBRO");
       //$.post(url, report_string);
       //$.post("http://192.168.0.13:8000/pastats/paview", report_string);
+      //$.post("http://pastatsmetrics.com/pastats/api/gamedata", report_string);
     }
 
     //console.log("YO TEST VICTORS", GameOverData[1], gameover_sent, !_.isEmpty(GameOverData[1]), gameover_sent<7, !(model.isSpectator()));
-    if((!_.isEmpty(GameOverData[1])) && gameover_sent<7 && model.isSpectator()){
+    if((!_.isEmpty(GameOverData[1])) && gameover_sent<5 && model.isSpectator()){
       gameover_sent +=1;
+      console.log("gameover data send")
       //$.post(url, report_string);
       //$.post("http://192.168.0.13:8000/pastats/paview", report_string);
+      //$.post("http://pastatsmetrics.com/pastats/api/gamedata", report_string);
     }
-    
-
         _.delay(dowhile, 5000);
   }
   dowhile();

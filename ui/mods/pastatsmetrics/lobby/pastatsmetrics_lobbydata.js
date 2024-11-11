@@ -6,6 +6,7 @@ localStorage.lobbyId = model.lobbyId();
 
 function SendList(){
   // some code i might have copied somewhere or someone told me how to do this, it's the getPlayerList
+  // when a game is local playerid = player name i don't know why PA is coded with ass
   var player_list = {};
   for(var i = 0; i<model.armies().length;i++){
       for(var j = 0; j< model.armies()[i].slots().length;j++){
@@ -39,11 +40,11 @@ function SendList(){
   //counter for debugger
   console.log("pastatsmetrics counter", model.startingGameCountdown());
   if(model.startingGameCountdown() != 5){ //==5
-
+    console.log(player_list)
     var nowUTC = new Date().toISOString().replace('T', ' ').replace(/\..+/, '') + ' UTC';
     //var dateUTC = nowUTC.slice(0, 10) + ' ' + nowUTC.slice(11, 16); //day hourminutes in UTC
-    var my_id = JSON.stringify(player_list) + nowUTC // the lobbyid in the Database is gonna be the sha 256 of this string, the playerlist can be reversed for 2 different player, need to check
-    console.log(nowUTC);
+    var my_id = fnv1aHash(JSON.stringify(player_list) + nowUTC.slice(0,nowUTC.length-7) + ' UTC'); // the lobbyid in the Database is gonna be the sha 256 of this string, the playerlist can be reversed for 2 different player, need to check
+    console.log("UWUWUWU", my_id);
     if(isLocal){
       model.lobbyId(my_id);
       localStorage.lobbyId = model.lobbyId();
@@ -72,9 +73,8 @@ function SendList(){
       is_Hidden: model.isHiddenGame(),
       is_Titan: model.isTitansGame(),
       is_Ranked: false,
-       // not sure if this one is always accurate, PA has bugs, supposed to be steam name
-      server_mods: custom_server_mods_list,
-      player_list: JSON.stringify(player_list),
+      server_mods: custom_server_mods_list || "No server mods",
+      player_list: player_list, //JSON.stringify(player_list),
       planets_biomes: model.planetBiomes(),
     };
     var report_string = JSON.stringify(report); // data send as a string containing a JSON
@@ -94,7 +94,8 @@ function SendList(){
     if(!current_player_is_spectating){ // IF NOT then we can send the lobbydata
       console.log("before sending data");
       //$.post(url, report_string);
-      //$.post("http://192.168.1.103:8000/pastats/paview", report_string);
+      //$.post("http://pastatsmetrics/pastats/api/lobbydata", report_string);
+    
       //$.post("http://192.168.1.119:8000/pastats/paview", report_string);
       //$.post("http://192.168.32.1:8000/pastats/paview", report_string);
       console.log("after sending data");
@@ -109,3 +110,11 @@ function SendList(){
 
 
 
+function fnv1aHash(str) {
+    var hash = 2166136261; // FNV offset basis
+    for (var i = 0; i < str.length; i++) {
+        hash ^= str.charCodeAt(i);
+        hash = (hash * 16777619) >>> 0; // FNV prime, keeps it 32-bit
+    }
+    return hash.toString(16); // Convert to hex for easy reading
+}
