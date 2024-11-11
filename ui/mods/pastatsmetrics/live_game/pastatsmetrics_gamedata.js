@@ -26,6 +26,8 @@ setTimeout(function() {
     };
 
     var report_string = JSON.stringify(ranked_report);
+
+    consolelog("PLAYERLUISTT", player_list);
     $.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
   } else {
     console.log("not ladder uwu");
@@ -139,6 +141,7 @@ var allIds = [];
         pnamelist.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
       }
     }
+    console.log("PUTAIN DEPUTE", pnamelist);
     var has_ai = false;
     for (var i = 0; i < model.players().length; i++) {
       if (model.players()[i].ai === 1) {
