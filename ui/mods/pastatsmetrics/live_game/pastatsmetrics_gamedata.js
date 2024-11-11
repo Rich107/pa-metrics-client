@@ -31,7 +31,7 @@ setTimeout(function() {
     console.log("not ladder uwu");
   }
 }, 1000);
-
+my_current_time = 0;
 console.log("jadoreleQQQQQQQQQQQuwu");
 var EcoData = []; 
 var TimeInSeconds = 0;
@@ -158,7 +158,7 @@ var allIds = [];
       lobby_id: lobby_id,
       eco_data: EcoData,
       kill_data: KillData,
-      time_in_seconds: Math.floor(TimeInSeconds),
+      time_in_seconds: my_current_time,
       unb_data: unb_get,
       is_galacticwar: model.gameOptions.isGalaticWar(), // yes game has a typo error it's galatic and not galactic
       is_ladder1v1: model.gameOptions.isLadder1v1(),
@@ -244,7 +244,8 @@ handlers.comKillData = function(payload){
 }
 
 handlers.TimeData = function(payload){
-  TimeInSeconds = payload;
+  TimeInSeconds = Math.floor(payload);
+  my_current_time = TimeInSeconds % 5 === 0 ? TimeInSeconds : TimeInSeconds + (5 - (TimeInSeconds % 5));
 }
 
 handlers.TheGameOverData = function(payload){
