@@ -158,7 +158,7 @@ var allIds = [];
       lobby_id: lobby_id,
       eco_data: EcoData,
       kill_data: KillData,
-      time_in_seconds: Math.floor(TimeInSeconds);//my_current_time,
+      time_in_seconds: Math.floor(TimeInSeconds),//my_current_time,
       unb_data: unb_get,
       is_galacticwar: model.gameOptions.isGalaticWar(), // yes game has a typo error it's galatic and not galactic
       is_ladder1v1: model.gameOptions.isLadder1v1(),
