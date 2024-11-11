@@ -39,14 +39,15 @@ function SendList(){
 
   //counter for debugger
   console.log("pastatsmetrics counter", model.startingGameCountdown());
-  if(model.startingGameCountdown() == 5){ //==5
+  if(model.startingGameCountdown() != 5){ //==5
 
     // UTC start date of the game, used to generate a hash which gonna be the lobby_id of local games
     var nowUTC = new Date().toISOString().replace('T', ' ').replace(/\..+/, '') + ' UTC';
     var my_id = fnv1aHash(JSON.stringify(player_list) + nowUTC.slice(0,nowUTC.length-7) + ' UTC'); // the lobbyid in the Database is gonna be the hash fnv of this string
-    if(isLocal){
+    if(isLocal || model.serverType()=="custom"){ //if you join a public locally hosted game, the game think it's not a local game since you joined it UwU
       model.lobbyId(my_id);
       localStorage.lobbyId = model.lobbyId();
+      console.log("wtf frero", my_id);
     }
     console.log("pastatsmetrics is SENDING DATA");
 
@@ -75,7 +76,6 @@ function SendList(){
       planets_biomes: model.planetBiomes(),
     };
     var report_string = JSON.stringify(report); // data send as a string containing a JSON
-  
     var ls_specs = model.spectators();
     var uberid = model.uberId();
 
@@ -86,7 +86,7 @@ function SendList(){
     }
 
     if(!current_player_is_spectating){ // IF NOT then we can send the lobbydata
-      $.post("http://pastatsmetrics/pastats/api/lobbydata", report_string);
+      $.post("https://pastatsmetrics.com/pastats/api/lobbydata", report_string);
     }
   }
   return

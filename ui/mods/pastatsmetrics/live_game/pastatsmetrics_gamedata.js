@@ -175,12 +175,12 @@ var allIds = [];
     var report_string = JSON.stringify(report);
 
     if(!(model.paused()) && !(model.isSpectator()) && !(model.showLanding())){
-      $.post("http://pastatsmetrics.com/pastats/api/gamedata", report_string);
+      $.post("https://pastatsmetrics.com/pastats/api/gamedata", report_string);
     }
 
     if((!_.isEmpty(GameOverData[1])) && gameover_sent<5 && model.isSpectator()){
       gameover_sent +=1;
-      $.post("http://pastatsmetrics.com/pastats/api/gamedata", report_string);
+      $.post("https://pastatsmetrics.com/pastats/api/gamedata", report_string);
     }
         _.delay(dowhile, 5000);
   }

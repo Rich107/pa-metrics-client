@@ -41,7 +41,7 @@ function SendList(){
       uber_id: model.uberId(), 
     };
     var report_string = JSON.stringify(report);
-    //$.post("http://pastatsmetrics/pastats/api/lobbydata", report_string);
+    //$.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
   }
   return
 }
