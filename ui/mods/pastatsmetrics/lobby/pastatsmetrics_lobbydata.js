@@ -39,7 +39,7 @@ function SendList(){
 
   //counter for debugger
   console.log("pastatsmetrics counter", model.startingGameCountdown());
-  if(model.startingGameCountdown() != 5){ //==5
+  if(model.startingGameCountdown() == 5){ //==5
 
     // UTC start date of the game, used to generate a hash which gonna be the lobby_id of local games
     var nowUTC = new Date().toISOString().replace('T', ' ').replace(/\..+/, '') + ' UTC';
