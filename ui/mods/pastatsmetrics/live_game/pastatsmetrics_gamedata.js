@@ -1,7 +1,6 @@
 // for a ranked game we have zero data in the lobby so gotta do it here, especially the lobbyid available only here
 setTimeout(function() {
   if (model.gameOptions.isLadder1v1()) {
-    console.log("teubeeee");
     var player_list = model.playerData();
     var planets_biomes = [];
     for (var i = 0; i < model.planetListState()["planets"].length; i++) {
@@ -27,9 +26,9 @@ setTimeout(function() {
     };
 
     var report_string = JSON.stringify(ranked_report);
-    //$.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
+    $.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
   } else {
-    console.log("fils de pute de la con de tes morts");
+    console.log("not ladder uwu");
   }
 }, 1000);
 
@@ -90,7 +89,7 @@ var allIds = [];
         var armyindex = model.armyIndex();
         var PlayerArmys = [];
         if (typeof armyindex == "undefined"){
-          armyindex = model.armyId() //wtf, why is it here idk
+          armyindex = model.armyId() //why is it here idk
         }
         PlayerArmys.push([]);
         }
@@ -120,10 +119,6 @@ var allIds = [];
     var currentAPM = myapm[myapm.length - 1];
     var lobby_id = ko.observable(-1).extend({ session: 'lobbyId' });
     lobby_id = lobby_id();
-    //localStorage.lobbyId() = lobby_id;
-    var ip = "192.168.0.13";
-    var ip2 = "192.168.32.1";
-    var url = "http://pastatsmetrics.com/pastats/paview";//"http://"+ ip + ":8000/main_isyw/paview";
     var unb_get = false;
 
     if(myData2){//idk why, if there is data ??
@@ -136,7 +131,7 @@ var allIds = [];
       lobby_id = (Math.floor(Math.random() * 100000000000000000000)).toFixed().toString() + (Math.floor(Math.random() * 1000000000000)).toFixed().toString();
     }
 
-    // NEED THIS pour playerlist name model.playerListState();
+    // NEED THIS for playerlist name model.playerListState();
     pnamelist = [];
     var test = model.playerListState();
     for(var i = 0; i < test["players"].length;i++){
@@ -176,23 +171,16 @@ var allIds = [];
       has_game_AI: has_ai,
       player_list: pnamelist,
     };
-    console.log("DEV DEBUG : ", report);
+    //console.log("DEV DEBUG : ", report);
     var report_string = JSON.stringify(report);
 
     if(!(model.paused()) && !(model.isSpectator()) && !(model.showLanding())){
-      console.log("WOWBRO");
-      //$.post(url, report_string);
-      //$.post("http://192.168.0.13:8000/pastats/paview", report_string);
-      //$.post("http://pastatsmetrics.com/pastats/api/gamedata", report_string);
+      $.post("http://pastatsmetrics.com/pastats/api/gamedata", report_string);
     }
 
-    //console.log("YO TEST VICTORS", GameOverData[1], gameover_sent, !_.isEmpty(GameOverData[1]), gameover_sent<7, !(model.isSpectator()));
     if((!_.isEmpty(GameOverData[1])) && gameover_sent<5 && model.isSpectator()){
       gameover_sent +=1;
-      console.log("gameover data send")
-      //$.post(url, report_string);
-      //$.post("http://192.168.0.13:8000/pastats/paview", report_string);
-      //$.post("http://pastatsmetrics.com/pastats/api/gamedata", report_string);
+      $.post("http://pastatsmetrics.com/pastats/api/gamedata", report_string);
     }
         _.delay(dowhile, 5000);
   }

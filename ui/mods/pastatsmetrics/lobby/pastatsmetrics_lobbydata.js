@@ -39,19 +39,16 @@ function SendList(){
 
   //counter for debugger
   console.log("pastatsmetrics counter", model.startingGameCountdown());
-  if(model.startingGameCountdown() != 5){ //==5
-    console.log(player_list)
+  if(model.startingGameCountdown() == 5){ //==5
+
+    // UTC start date of the game, used to generate a hash which gonna be the lobby_id of local games
     var nowUTC = new Date().toISOString().replace('T', ' ').replace(/\..+/, '') + ' UTC';
-    //var dateUTC = nowUTC.slice(0, 10) + ' ' + nowUTC.slice(11, 16); //day hourminutes in UTC
-    var my_id = fnv1aHash(JSON.stringify(player_list) + nowUTC.slice(0,nowUTC.length-7) + ' UTC'); // the lobbyid in the Database is gonna be the sha 256 of this string, the playerlist can be reversed for 2 different player, need to check
-    console.log("UWUWUWU", my_id);
+    var my_id = fnv1aHash(JSON.stringify(player_list) + nowUTC.slice(0,nowUTC.length-7) + ' UTC'); // the lobbyid in the Database is gonna be the hash fnv of this string
     if(isLocal){
       model.lobbyId(my_id);
       localStorage.lobbyId = model.lobbyId();
     }
     console.log("pastatsmetrics is SENDING DATA");
-    var ip = "192.168.0.13";
-    var url = "http://pastatsmetrics.com/pastats/paview"; //"http://"+ ip + ":8000/main_isyw/paview";
 
     // setup a default gameName if empty
     if(model.gameName()){
@@ -61,7 +58,7 @@ function SendList(){
       game_name_v = "None";
     }
     var report = {
-      is_lobby_data: true, // used by the server to know if it's lobbydata or livegame data, i could just do 2 different receiving endpath for clarity 
+      is_lobby_data: true, // used by the server to know if it's lobbydata or livegame data, but useless now since there are 2 endpoints on server for  lobby and live game data
       lobby_id: model.lobbyId(),
       uber_id: model.uberId(),
       user_name: model.username(),
@@ -79,9 +76,6 @@ function SendList(){
     };
     var report_string = JSON.stringify(report); // data send as a string containing a JSON
   
-
-    
-    console.log("WHAT IS SEND", report);
     var ls_specs = model.spectators();
     var uberid = model.uberId();
 
@@ -92,13 +86,7 @@ function SendList(){
     }
 
     if(!current_player_is_spectating){ // IF NOT then we can send the lobbydata
-      console.log("before sending data");
-      //$.post(url, report_string);
-      //$.post("http://pastatsmetrics/pastats/api/lobbydata", report_string);
-    
-      //$.post("http://192.168.1.119:8000/pastats/paview", report_string);
-      //$.post("http://192.168.32.1:8000/pastats/paview", report_string);
-      console.log("after sending data");
+      $.post("http://pastatsmetrics/pastats/api/lobbydata", report_string);
     }
   }
   return
@@ -109,12 +97,12 @@ function SendList(){
 })();
 
 
-
+// hash funtion for  generating single/multiplayer local games lobby_id.
 function fnv1aHash(str) {
-    var hash = 2166136261; // FNV offset basis
+    var hash = 2166136261;
     for (var i = 0; i < str.length; i++) {
         hash ^= str.charCodeAt(i);
-        hash = (hash * 16777619) >>> 0; // FNV prime, keeps it 32-bit
+        hash = (hash * 16777619) >>> 0;
     }
-    return hash.toString(16); // Convert to hex for easy reading
+    return hash.toString(16);
 }

@@ -3,8 +3,7 @@
 //console.log("hello");
 //var my_lobbyid = "";
 model.my_lobbyid = ko.observable(-1).extend({ session: 'lobbyId' });
-//model.lobbyId(my_lobbyid);
-//console.log("hello2");
+
 function SendList(){
 
   var player_list = {};
@@ -18,27 +17,14 @@ function SendList(){
   var isRanked = true;
   
   if(model.startingGameCountdown() == 5){
-    // no lobbyid in lobby for ranked so gotta make one fake for regsitering the game and then replacing with the real one
-    var my_id = (Math.floor(Math.random() * 100000000000000000000)).toFixed().toString() + (Math.floor(Math.random() * 1000000000000)).toFixed().toString();
-    
-    var nowUTC = new Date().toISOString();
-    var dateUTC = nowUTC.slice(0, 10) + ' ' + nowUTC.slice(11, 16); //day hourminutes in UTC
-    var my_id = JSON.stringify(player_list) + dateUTC
-    console.log("avant")
+    // no lobbyid in lobby for ranked so gotta make one fake for registering the game and then replacing with the real one
+    var nowUTC = new Date().toISOString().replace('T', ' ').replace(/\..+/, '') + ' UTC';
+    var my_id = fnv1aHash(JSON.stringify(player_list) + nowUTC.slice(0,nowUTC.length-7) + ' UTC');
+
     if(isRanked){
       model.my_lobbyid(my_id);
     }
-    //console.log(model.my_lobbyid());
-    console.log("Gryz stats SENDATA");
-    var ip = "192.168.32.1"
-    var url = "http://pastatsmetrics.com/pastats/paview" //"http://"+ ip + ":8000/main_isyw/paview";
-
-    /*if(model.gameName().length > 0){
-      game_name = model.gameName();
-    }
-    else{
-      game_name = "None";
-    }*/
+    console.log("pastatsmetrics sending ranked_lobby data");
     var report = {
       is_lobby_data: true,
       lobby_id: model.my_lobbyid(),
@@ -53,19 +39,9 @@ function SendList(){
       player_list: JSON.stringify(player_list),
       planets_biomes: model.planetBiomes(),
       uber_id: model.uberId(), 
-      //model.teamCount()
     };
-    //console.log("lobbyrepport", report);
     var report_string = JSON.stringify(report);
-
-
-
-    //console.log(report_string);
-    //$.post(url, report_string);
-    $.post("http://192.168.32.1:8000/pastats/paview", report_string);
-    //$.post("http://192.168.1.103:8000/pastats/paview", report_string);
-    //$.post("http://172.20.10.6:8000/pastats/paview", report_string);
-    $.post("http://192.168.1.119:8000/pastats/paview", report_string);
+    //$.post("http://pastatsmetrics/pastats/api/lobbydata", report_string);
   }
   return
 }
@@ -73,3 +49,13 @@ function SendList(){
 (function (){
   setInterval(SendList, 1000);
 })();
+
+
+function fnv1aHash(str) {
+    var hash = 2166136261; // FNV offset basis
+    for (var i = 0; i < str.length; i++) {
+        hash ^= str.charCodeAt(i);
+        hash = (hash * 16777619) >>> 0; // FNV prime, keeps it 32-bit
+    }
+    return hash.toString(16); // Convert to hex for easy reading
+}
