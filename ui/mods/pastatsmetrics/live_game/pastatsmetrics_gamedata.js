@@ -1,7 +1,13 @@
 // for a ranked game we have zero data in the lobby so gotta do it here, especially the lobbyid available only here
 setTimeout(function() {
   if (model.gameOptions.isLadder1v1()) {
-    var player_list = model.playerData();
+    pnamelist2 = [];
+    var test = model.playerListState();
+    for(var i = 0; i < test["players"].length;i++){
+      for(var j = 0; j < test["players"][i]["slots"].length;j++){
+        pnamelist2.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
+      }
+    }
     var planets_biomes = [];
     for (var i = 0; i < model.planetListState()["planets"].length; i++) {
       planets_biomes.push(model.planetListState()["planets"][i]["biome"]);
@@ -19,15 +25,13 @@ setTimeout(function() {
       is_Ranked: true,
       user_name: "None",
       server_mods: "No server mods",
-      player_list: JSON.stringify(player_list),
+      player_list: pnamelist2,
       planets_biomes: JSON.stringify(planets_biomes),
       uber_id: model.uberId(),
       the_date: toUTCStringAlternative(),
     };
 
     var report_string = JSON.stringify(ranked_report);
-
-    consolelog("PLAYERLUISTT", player_list);
     $.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
   } else {
     console.log("not ladder uwu");
@@ -91,7 +95,7 @@ var allIds = [];
         var armyindex = model.armyIndex();
         var PlayerArmys = [];
         if (typeof armyindex == "undefined"){
-          armyindex = model.armyId() //why is it here idk
+          armyindex = model.armyId()
         }
         PlayerArmys.push([]);
         }
@@ -141,7 +145,7 @@ var allIds = [];
         pnamelist.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
       }
     }
-    console.log("PUTAIN DEPUTE", pnamelist);
+
     var has_ai = false;
     for (var i = 0; i < model.players().length; i++) {
       if (model.players()[i].ai === 1) {
