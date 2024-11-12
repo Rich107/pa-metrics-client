@@ -7,7 +7,6 @@ setTimeout(function() {
       for(var j = 0; j < test["players"][i]["slots"].length;j++){
         var player_name_string = test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`")
         pnamelist2[player_name_string] = ["0123456789", test["players"][i]["primary_color"]];
-        //.push([test["players"][i]["slots"][j].replace("'", "`").replace("\"", "`") , test["players"][i]["primary_color"]])
       }
     }
     var planets_biomes = [];
@@ -34,7 +33,6 @@ setTimeout(function() {
     };
     var report_string = JSON.stringify(ranked_report);
     $.post("http://pastatsmetrics.com/pastats/api/lobbydata", report_string);
-    //$.post("http://127.0.0.1:8000/pastats/api/lobbydata", report_string);
   } else {
     console.log("not ladder uwu");
   }
@@ -50,9 +48,6 @@ var myapm = [0];
 var keypressed = [];
 var myUnitsIds = [];
 var gameover_sent = 4;
-
-//var metalProduced = [0]
-//var energyProduced = [0]
 
 var metallost = []
 var metaldestroy = []
@@ -113,7 +108,7 @@ var allIds = [];
         myi = 0;      
     }
     automation();
-    console.log("SENDING DATA");
+    //console.log("SENDING DATA");
 
     var gameState = JSON.stringify(GameOverData[0]);
     var gameVictors = GameOverData[1];
@@ -138,7 +133,7 @@ var allIds = [];
       lobby_id = (Math.floor(Math.random() * 100000000000000000000)).toFixed().toString() + (Math.floor(Math.random() * 1000000000000)).toFixed().toString();
     }
 
-    // NEED THIS for playerlist name model.playerListState();
+    // NEED THIS for playerlist
     pnamelist = [];
     var test = model.playerListState();
     for(var i = 0; i < test["players"].length;i++){
@@ -183,19 +178,16 @@ var allIds = [];
 
     if(!(model.paused()) && !(model.isSpectator()) && !(model.showLanding())){
       $.post("https://pastatsmetrics.com/pastats/api/gamedata", report_string);
-      //$.post("http://127.0.0.1:8000/pastats/api/gamedata", report_string);
     }
 
     if((!_.isEmpty(GameOverData[1])) && gameover_sent<5 && model.isSpectator()){
       gameover_sent +=1;
       $.post("https://pastatsmetrics.com/pastats/api/gamedata", report_string);
-      //$.post("http://127.0.0.1:8000/pastats/api/gamedata", report_string);
     }
         _.delay(dowhile, 5000);
   }
   dowhile();
 })();
-
 
 // from flubb's superstats mod, same code as him for apm
 self.apmCounter = setInterval(function () {
@@ -240,9 +232,6 @@ handlers.EcoDataAll = function(payload){
   var metalWinRate = model.enemyMetalDestroyed();
   var metalLossRate = model.metalLost();
 
-  //energyProduced.push(energyProduced[energyProduced.length - 1] + EcoData[0]);
-  //metalProduced.push(metalProduced[metalProduced.length - 1] + EcoData[6]);
-
   EcoData.push(metalWinRate);
   EcoData.push(metalLossRate);
 }
@@ -254,7 +243,6 @@ handlers.comKillData = function(payload){
 
 handlers.TimeData = function(payload){
   TimeInSeconds = Math.floor(payload);
-  //my_current_time = TimeInSeconds % 5 === 0 ? TimeInSeconds : TimeInSeconds + (5 - (TimeInSeconds % 5));
 }
 
 handlers.TheGameOverData = function(payload){

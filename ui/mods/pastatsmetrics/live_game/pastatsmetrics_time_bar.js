@@ -1,4 +1,4 @@
-//recup time en sec et en string
+//get time in seconds and as string
 function SendTimeData(){
   var TimeData = model.currentTimeInSeconds();
 

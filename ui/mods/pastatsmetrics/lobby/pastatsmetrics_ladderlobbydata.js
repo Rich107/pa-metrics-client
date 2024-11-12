@@ -1,3 +1,5 @@
+// USELESS FILE
+
 // ce fichier est ridicule on ne peut register une ranked que in game, rien de spécial dans le lobby e nfait
 //fichier qui doit etre delete et juste on le garde là pour pouvoir resetup un lobby une fois IG
 //console.log("hello");

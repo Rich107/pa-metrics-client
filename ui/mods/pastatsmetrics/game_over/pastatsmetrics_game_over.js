@@ -1,3 +1,4 @@
+// get info when game is over and add a button to access charts directly
 function SendGameOver(){
   var StateGameOver = model.state();
   var VictorsPlayers = model.victors();
