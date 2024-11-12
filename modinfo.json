@@ -1,14 +1,14 @@
  {
-   "context": "client",
-   "identifier": "com.pa.marechalgryzzly.pastatsmetrics",
-   "display_name": "pastatsmetrics",
-   "description": "Wanna see if you're a chad, go watch your stats, and send screenshots to your friends only when you win",
-   "author": "MarechalGryzzly",
-   "version": "1.0",
-   "build": "114880",
-   "date": "2024-20-06",
-   "signature": "not yet implemented",
-   "priority": 100,
+    "context": "client",
+    "identifier": "com.pa.marechalgryzzly.pastatsmetrics",
+    "display_name": "pastatsmetrics",
+    "description": "Wanna see if you're a chad, go watch your stats, and send screenshots to your friends only when you win",
+    "author": "MarechalGryzzly",
+    "version": "1.0",
+    "build": "120799",
+    "date": "2024-12-11",
+    "signature": "not yet implemented",
+    "priority": 100,
     "scenes": {
         "live_game": [
           "coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_gamedata.js"

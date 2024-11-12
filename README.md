@@ -20,7 +20,7 @@ It records stats of your games and save them in a database, so you can check you
 		- energy_current_energy
 		- energy_max_energy
 	- Metal :
-		-  metal_gain
+		- metal_gain
 		- metal_loss
 		- metal_net
 		- metal_efficiency_perc
