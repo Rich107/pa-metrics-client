@@ -1,0 +1,36 @@
+{
+  "lobby_id": "12345-67890-abcdef",
+  "uber_id": "98765432109876543210",
+  "user_name": "PlayerName123",
+  "the_date": "2025-08-26T14:30:45.123Z",
+  "game_name": "Epic Battle Arena",
+  "is_Local": false,
+  "is_Public": true,
+  "is_FriendsOnly": false,
+  "is_Hidden": false,
+  "is_Titan": true,
+  "is_Ranked": false,
+  "server_mods": "Advanced Combat Mod, Economy Balancer",
+  "player_list": {
+    "PlayerName123": "12345",
+    "EnemyPlayer456": "67890",
+    "AllyPlayer789": "11111"
+  },
+  "planets_biomes": [
+    {
+      "name": "Desert World",
+      "biome": "desert",
+      "size": "large"
+    },
+    {
+      "name": "Ocean Planet",
+      "biome": "tropical",
+      "size": "medium"
+    },
+    {
+      "name": "Ice World",
+      "biome": "ice",
+      "size": "small"
+    }
+  ]
+}
