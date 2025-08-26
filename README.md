@@ -1,8 +1,9 @@
 # pastatsmetrics-client
 
 ## What is this mods
-A homemade copy of super stats
 It records stats of your games and save them in a database, so you can check your stats whenever you want on the website
+
+The data from this mod will be collected and added to ggleaderboards. If you have a membership with ggleaderboard you will be able to access this data from the ggleaderboard website
 
 ### What data does it records
 - Data of every single game you play, custom, private, ranked, sandbox anything (Toggle for this is on the TO DO LIST)
@@ -78,3 +79,13 @@ It records stats of your games and save them in a database, so you can check you
 - It does not records data until the commander spawns
 - It does not records data after your death either you win or loose
 - It does not records data when you spectate
+
+## Notes on Modding:
+To debug the game whilst it is running you will need this debugger:
+- https://cdn.planetaryannihilation.com/downloads/debugger-window
+
+You will also need to run the game with the following arguments:
+I think this is done in the steam luncher?
+``` bash
+--coherent_port=9999
+```
