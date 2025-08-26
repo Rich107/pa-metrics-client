@@ -1,0 +1,16 @@
+{
+  "lobby_id": "ladder-12345-67890-ranked",
+  "is_Local": false,
+  "is_Public": true,
+  "is_FriendsOnly": false,
+  "is_Hidden": false,
+  "is_Titan": true,
+  "user_name": "None",
+  "server_mods": [],
+  "player_list": "{\"RankedPlayer1\":\"11111111111111111111\",\"RankedPlayer2\":\"22222222222222222222\"}",
+  "planets_biomes": [
+    {"name": "Ranked Arena", "biome": "metal", "size": "small"},
+    {"name": "Secondary Base", "biome": "lava", "size": "tiny"}
+  ],
+  "uber_id": "11111111111111111111"
+}
