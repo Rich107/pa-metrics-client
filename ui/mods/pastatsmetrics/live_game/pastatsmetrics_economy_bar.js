@@ -1,15 +1,15 @@
 /*
 
 
-Toute les fonction ont des équivalents String
-model.energyGain (y a aussi avec GainString) ==> le gain net
-model.energyLoss ==> la conso net
-model.energyNet ==> prod net
-model.energyEfficiencyPerc ça c'est le pourcentage prod/conso si 1 alors 100% si 5.55 alors le rapport vaut 555% en pourcent :)
-model.currentEnergy ==> valeur du déprotomax
-model.maxEnergy ==> max du depot
+All functions have String equivalents
+model.energyGain (there's also one with GainString) ==> net gain
+model.energyLoss ==> net consumption
+model.energyNet ==> net production
+model.energyEfficiencyPerc this is the production/consumption percentage - if 1 then 100%, if 5.55 then the ratio is 555% :)
+model.currentEnergy ==> current storage value
+model.maxEnergy ==> storage maximum
 
-tout pareil avec model.metal
+same applies to model.metal
 
 
 */
