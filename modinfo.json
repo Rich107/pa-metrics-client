@@ -1,12 +1,12 @@
  {
     "context": "client",
-    "identifier": "com.pa.marechalgryzzly.pastatsmetrics",
+    "identifier": "com.pa.Rich107.pastatsmetrics",
     "display_name": "pastatsmetrics",
-    "description": "Wanna see if you're a chad, go watch your stats, and send screenshots to your friends only when you win",
-    "author": "MarechalGryzzly",
+    "description": "Sends data from your games to ggleaderboards, allowing you to see your metrics overtime and see where you need to improve. More info at https://ggleaderboards.com"",
+    "author": "Rich107",
     "version": "1.0",
     "build": "120799",
-    "date": "2024-12-11",
+    "date": "2025-08-26",
     "signature": "not yet implemented",
     "priority": 100,
     "scenes": {
