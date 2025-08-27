@@ -4,7 +4,7 @@
     "display_name": "pa-metrics",
     "description": "Sends data from your games to ggleaderboards, allowing you to see your metrics overtime and see where you need to improve. More info at https://ggleaderboards.com"",
     "author": "Rich107",
-    "github": "https://github.com/Rich107/pa-metrics-client",
+    "github": "https://github.com/rich107/pa-metrics-client",
     "version": "1.0",
     "build": "214627",
     "date": "2025-08-26",
