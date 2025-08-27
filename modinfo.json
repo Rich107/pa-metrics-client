@@ -1,11 +1,11 @@
  {
     "context": "client",
-    "identifier": "com.pa.Rich107.pastatsmetrics",
+    "identifier": "com.pa.Rich107.pa-metrics",
     "display_name": "pastatsmetrics",
     "description": "Sends data from your games to ggleaderboards, allowing you to see your metrics overtime and see where you need to improve. More info at https://ggleaderboards.com"",
     "author": "Rich107",
     "version": "1.0",
-    "build": "120799",
+    "build": "214627",
     "date": "2025-08-26",
     "signature": "not yet implemented",
     "priority": 100,
