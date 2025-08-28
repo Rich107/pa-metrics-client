@@ -37,9 +37,11 @@ setTimeout(function () {
 			the_date: toUTCStringAlternative(),
 		};
 		var report_string = JSON.stringify(ranked_report);
+		console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
+		console.log("LOBBY DATA : ", ranked_report);
 		$.post(
-			"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
-			report_string,
+			"https://ggleaderboards.com/api/v1/pa-ame-stats/lobbydata",
+			rseport_string,
 		);
 	} else {
 		console.log("not ladder uwu");
@@ -200,6 +202,10 @@ var allIds = [];
 		var report_string = JSON.stringify(report);
 
 		if (!model.paused() && !model.isSpectator() && !model.showLanding()) {
+			console.log(
+				`SENDING ${model.gameOptions.isLadder1v1()} LOBBY DATA FROM: gamedata.js`,
+			);
+			console.log("LOBBY DATA : ", report_string);
 			$.post(
 				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
 				report_string,
@@ -212,6 +218,9 @@ var allIds = [];
 			model.isSpectator()
 		) {
 			gameover_sent += 1;
+			console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
+			console.log("we have gameover data");
+			console.log("LOBBY DATA : ", report_string);
 			$.post(
 				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
 				report_string,

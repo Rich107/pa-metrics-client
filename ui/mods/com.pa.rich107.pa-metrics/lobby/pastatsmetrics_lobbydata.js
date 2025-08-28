@@ -91,6 +91,8 @@ function SendList() {
 
 		if (!current_player_is_spectating) {
 			// IF NOT then we can send the lobbydata
+			console.log("SENDING LOBBY DATA FROM: lobbydata.js");
+			console.log("LOBBY DATA : ", report_string);
 			$.post(
 				"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
 				report_string,
@@ -113,4 +115,3 @@ function fnv1aHash(str) {
 	}
 	return hash.toString(16);
 }
-
