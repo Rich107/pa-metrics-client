@@ -1,5 +1,6 @@
 // get info when game is over and add a button to access charts directly
 function SendGameOver() {
+	console.log("pastatsmetrics game over data message");
 	var StateGameOver = model.state();
 	var VictorsPlayers = model.victors();
 
@@ -30,4 +31,3 @@ function superStatsReported() {}
 			'<div data-bind="visible:superStatsReported"><input type="button" value="PA STATS METRICS" data-bind="click:goToSuperStats" /></div>',
 		);
 })();
-
