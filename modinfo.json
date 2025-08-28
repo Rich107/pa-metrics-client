@@ -12,22 +12,22 @@
 	"priority": 100,
 	"scenes": {
 		"live_game": [
-			"coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_gamedata.js"
+			"coui://ui/mods/com.pa.rich107.pa-metrics/live_game/pastatsmetrics_gamedata.js"
 		],
 		"live_game_econ": [
-			"coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_economy_bar.js"
+			"coui://ui/mods/com.pa.rich107.pa-metrics/live_game/pastatsmetrics_economy_bar.js"
 		],
 		"live_game_unit_alert": [
-			"coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_unit_alert.js"
+			"coui://ui/mods/com.pa.rich107.pa-metrics/live_game/pastatsmetrics_unit_alert.js"
 		],
 		"live_game_time_bar": [
-			"coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_time_bar.js"
+			"coui://ui/mods/com.pa.rich107.pa-metrics/live_game/pastatsmetrics_time_bar.js"
 		],
 		"new_game": [
-			"coui://ui/mods/pastatsmetrics/lobby/pastatsmetrics_lobbydata.js"
+			"coui://ui/mods/com.pa.rich107.pa-metrics/lobby/pastatsmetrics_lobbydata.js"
 		],
 		"game_over": [
-			"coui://ui/mods/pastatsmetrics/game_over/pastatsmetrics_game_over.js"
+			"coui://ui/mods/com.pa.rich107.pa-metrics/game_over/pastatsmetrics_game_over.js"
 		]
 	},
 	"category": ["ui", "titans", "in-game"]
