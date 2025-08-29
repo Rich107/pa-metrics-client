@@ -4,6 +4,8 @@ model.lobbyId = ko.observable(-1).extend({ session: "lobbyId" });
 model.lobbyId(my_lobbyid);
 localStorage.lobbyId = model.lobbyId();
 
+console.log("lobby id from session lobbydata.js: ", model.lobbyId());
+
 function SendList() {
 	// some code i might have copied somewhere or someone told me how to do this, it's the getPlayerList
 	// when a game is local playerid(=uber_id) = player name i don't know why PA is coded like this

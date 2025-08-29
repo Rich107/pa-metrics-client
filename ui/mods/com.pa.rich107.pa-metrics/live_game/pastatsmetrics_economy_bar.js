@@ -14,25 +14,39 @@ same applies to model.metal
 
 */
 
-function SendEco(){
-  var EnergyGain = model.energyGain()
-  var EnergyLoss = model.energyLoss()
-  var EnergyNet = model.energyNet()
-  var EnergyEfficiencyPerc = model.energyEfficiencyPerc()
-  var EnergyCurrentEnergy = model.currentEnergy()
-  var EnergyMaxEnergy = model.maxEnergy()
+function SendEco() {
+	var EnergyGain = model.energyGain();
+	var EnergyLoss = model.energyLoss();
+	var EnergyNet = model.energyNet();
+	var EnergyEfficiencyPerc = model.energyEfficiencyPerc();
+	var EnergyCurrentEnergy = model.currentEnergy();
+	var EnergyMaxEnergy = model.maxEnergy();
 
-  var MetalGain = model.metalGain()
-  var MetalLoss = model.metalLoss()
-  var MetalNet = model.metalNet()
-  var MetalEfficiencyPerc = model.metalEfficiencyPerc()
-  var MetalCurrentMetal = model.currentMetal()
-  var MetalMaxMetal = model.maxMetal()
+	var MetalGain = model.metalGain();
+	var MetalLoss = model.metalLoss();
+	var MetalNet = model.metalNet();
+	var MetalEfficiencyPerc = model.metalEfficiencyPerc();
+	var MetalCurrentMetal = model.currentMetal();
+	var MetalMaxMetal = model.maxMetal();
 
-  api.Panel.message(api.Panel.parentId, "EcoDataAll", [EnergyGain, EnergyLoss, EnergyNet, EnergyEfficiencyPerc, EnergyCurrentEnergy, EnergyMaxEnergy, MetalGain, MetalLoss, MetalNet, MetalEfficiencyPerc, MetalCurrentMetal, MetalMaxMetal])
-  return
+	console.log("send eco data economy_bar.js");
+	api.Panel.message(api.Panel.parentId, "EcoDataAll", [
+		EnergyGain,
+		EnergyLoss,
+		EnergyNet,
+		EnergyEfficiencyPerc,
+		EnergyCurrentEnergy,
+		EnergyMaxEnergy,
+		MetalGain,
+		MetalLoss,
+		MetalNet,
+		MetalEfficiencyPerc,
+		MetalCurrentMetal,
+		MetalMaxMetal,
+	]);
+	return;
 }
 
-(function (){
-  setInterval(SendEco, 1000);
+(function () {
+	setInterval(SendEco, 1000);
 })();

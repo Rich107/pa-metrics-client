@@ -1,6 +1,6 @@
 // get info when game is over and add a button to access charts directly
 function SendGameOver() {
-	console.log("pastatsmetrics game over data message");
+	console.log("pastatsmetrics game over data message 1");
 	var StateGameOver = model.state();
 	var VictorsPlayers = model.victors();
 
@@ -12,6 +12,7 @@ function SendGameOver() {
 }
 
 (function () {
+	console.log("pastatsmetrics game over data message 2");
 	setInterval(SendGameOver, 1000);
 })();
 
@@ -19,6 +20,7 @@ lobby_id = localStorage.lobbyId;
 
 function superStatsReported() {}
 (function () {
+	console.log("pastatsmetrics game over data message 3");
 	model.goToSuperStats = function () {
 		engine.call(
 			"web.launchPage",

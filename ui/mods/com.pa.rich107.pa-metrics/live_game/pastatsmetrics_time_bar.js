@@ -1,12 +1,12 @@
 //get time in seconds and as string
-function SendTimeData(){
-  var TimeData = model.currentTimeInSeconds();
+function SendTimeData() {
+	var TimeData = model.currentTimeInSeconds();
 
-
-  api.Panel.message(api.Panel.parentId, "TimeData", [TimeData])
-  return
+	console.log("send time data time_bar.js");
+	api.Panel.message(api.Panel.parentId, "TimeData", [TimeData]);
+	return;
 }
 
-(function (){
-  setInterval(SendTimeData, 200);
+(function () {
+	setInterval(SendTimeData, 200);
 })();

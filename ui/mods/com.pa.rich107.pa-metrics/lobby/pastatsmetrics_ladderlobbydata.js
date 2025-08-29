@@ -5,6 +5,7 @@
 //console.log("hello");
 //var my_lobbyid = "";
 model.my_lobbyid = ko.observable(-1).extend({ session: "lobbyId" });
+console.log("lobby id from session: ladderlobbydata.js", model.my_lobbyid());
 
 function SendList() {
 	var player_list = {};
