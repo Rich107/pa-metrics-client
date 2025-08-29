@@ -1,7 +1,7 @@
 // USELESS FILE
 
-// ce fichier est ridicule on ne peut register une ranked que in game, rien de spécial dans le lobby e nfait
-//fichier qui doit etre delete et juste on le garde là pour pouvoir resetup un lobby une fois IG
+// this file is ridiculous, you can only register a ranked game in-game, nothing special in the lobby actually
+// file that should be deleted and we just keep it here to be able to reset up a lobby once in-game
 //console.log("hello");
 //var my_lobbyid = "";
 model.my_lobbyid = ko.observable(-1).extend({ session: "lobbyId" });
