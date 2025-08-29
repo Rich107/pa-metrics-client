@@ -1,0 +1,36 @@
+{
+  "is_Local": false,
+  "is_Public": true,
+  "is_FriendsOnly": false,
+  "is_Hidden": false,
+  "is_Titan": true,
+  "is_Ranked": true,
+  "user_name": "None",
+  "server_mods": "No server mods",
+  "player_list": {
+    "RankedPlayer1": {
+      "id": "0123456789",
+      "color": "#FF0000"
+    },
+    "RankedPlayer2": {
+      "id": "9876543210", 
+      "color": "#0000FF"
+    }
+  },
+  "planets_biomes": {
+    "planets": [
+      {
+        "name": "Ranked Desert",
+        "biome": "desert",
+        "size": "medium"
+      },
+      {
+        "name": "Ranked Ice",
+        "biome": "ice",
+        "size": "small"
+      }
+    ]
+  },
+  "uber_id": "11111111111111111111",
+  "the_date": "2025-08-26T14:25:10.789Z"
+}

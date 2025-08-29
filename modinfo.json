@@ -1,34 +1,34 @@
- {
-    "context": "client",
-    "identifier": "com.pa.marechalgryzzly.pastatsmetrics",
-    "display_name": "pastatsmetrics",
-    "description": "Wanna see if you're a chad, go watch your stats, and send screenshots to your friends only when you win",
-    "author": "MarechalGryzzly",
-    "version": "1.0",
-    "build": "120799",
-    "date": "2024-12-11",
-    "signature": "not yet implemented",
-    "priority": 100,
-    "scenes": {
-        "live_game": [
-          "coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_gamedata.js"
-        ],
-        "live_game_econ": [
-          "coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_economy_bar.js"
-        ],
-        "live_game_unit_alert": [
-          "coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_unit_alert.js"
-        ],
-        "live_game_time_bar": [
-          "coui://ui/mods/pastatsmetrics/live_game/pastatsmetrics_time_bar.js"
-        ],
-        "new_game": [
-          "coui://ui/mods/pastatsmetrics/lobby/pastatsmetrics_lobbydata.js"
-        ],
-        "game_over":[
-          "coui://ui/mods/pastatsmetrics/game_over/pastatsmetrics_game_over.js"
-        ]
-
-    },
-    "category": ["ui","titans", "in-game"]
- }
+{
+	"context": "client",
+	"identifier": "com.pa.Rich107.pa-metrics",
+	"display_name": "pa-metrics",
+	"description": "Sends data from your games to ggleaderboards, allowing you to see your metrics overtime and see where you need to improve. More info at https://ggleaderboards.com",
+	"author": "Rich107",
+	"github": "https://github.com/rich107/pa-metrics-client",
+	"version": "1.0",
+	"build": "214627",
+	"date": "2025-08-26",
+	"signature": "not yet implemented",
+	"priority": 100,
+	"scenes": {
+		"live_game": [
+			"coui://ui/mods/com.pa.rich107.pa-metrics/live_game/pastatsmetrics_gamedata.js"
+		],
+		"live_game_econ": [
+			"coui://ui/mods/com.pa.rich107.pa-metrics/live_game/pastatsmetrics_economy_bar.js"
+		],
+		"live_game_unit_alert": [
+			"coui://ui/mods/com.pa.rich107.pa-metrics/live_game/pastatsmetrics_unit_alert.js"
+		],
+		"live_game_time_bar": [
+			"coui://ui/mods/com.pa.rich107.pa-metrics/live_game/pastatsmetrics_time_bar.js"
+		],
+		"new_game": [
+			"coui://ui/mods/com.pa.rich107.pa-metrics/lobby/pastatsmetrics_lobbydata.js"
+		],
+		"game_over": [
+			"coui://ui/mods/com.pa.rich107.pa-metrics/game_over/pastatsmetrics_game_over.js"
+		]
+	},
+	"category": ["ui", "titans", "in-game"]
+}

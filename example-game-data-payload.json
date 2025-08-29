@@ -1,0 +1,32 @@
+{
+  "is_lobby_data": false,
+  "game_state": "{\"state\":\"playing\",\"phase\":\"mid_game\",\"victory_conditions\":[\"annihilation\"],\"timestamp\":\"2025-08-26T14:35:22.456Z\"}",
+  "game_victors": [],
+  "uber_id": "98765432109876543210",
+  "player_name": "PlayerName123",
+  "system_name": "Forge System Alpha",
+  "the_date": "2025-08-26T14:35:22.456Z",
+  "current_apm": 145,
+  "lobby_id": "12345-67890-abcdef",
+  "eco_data": [
+    1250, 980, 270, 1.28, 15000, 25000,
+    2100, 1850, 250, 1.14, 8500, 12000,
+    150, 75
+  ],
+  "kill_data": "[{\"unit_type\":\"tank\",\"kills\":12,\"deaths\":3},{\"unit_type\":\"bot\",\"kills\":8,\"deaths\":5},{\"unit_type\":\"air\",\"kills\":15,\"deaths\":2}]",
+  "time_in_seconds": 892,
+  "unb_data": [
+    "{\"planet_0\":{\"tanks\":25,\"bots\":45,\"air\":12,\"naval\":0,\"orbital\":3}}",
+    "{\"planet_1\":{\"tanks\":8,\"bots\":15,\"air\":5,\"naval\":12,\"orbital\":1}}"
+  ],
+  "is_galacticwar": false,
+  "is_ladder1v1": false,
+  "is_land_anywhere": true,
+  "is_listen_to_spectators": false,
+  "is_sandbox": false,
+  "is_dynamic_alliances": false,
+  "dynamic_alliance_victory": false,
+  "game_type": "classic",
+  "has_game_AI": true,
+  "player_list": "[[\"PlayerName123\",\"#FF0000\"],[\"EnemyPlayer456\",\"#0000FF\"],[\"AIPlayer\",\"#00FF00\"]]"
+}
