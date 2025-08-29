@@ -7,6 +7,7 @@ function SendTimeData() {
 	return;
 }
 
-(function () {
+function initTimeTracking() {
 	setInterval(SendTimeData, 200);
-})();
+}
+initTimeTracking();

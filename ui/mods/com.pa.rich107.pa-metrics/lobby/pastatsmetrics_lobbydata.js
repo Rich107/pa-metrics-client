@@ -104,9 +104,10 @@ function SendList() {
 	return;
 }
 
-(function () {
+function initLobbyTracking() {
 	setInterval(SendList, 1000);
-})();
+}
+initLobbyTracking();
 
 // hash funtion for  generating single/multiplayer local games lobby_id.
 function fnv1aHash(str) {

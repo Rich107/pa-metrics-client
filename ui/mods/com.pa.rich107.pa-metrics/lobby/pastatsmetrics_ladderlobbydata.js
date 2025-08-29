@@ -55,9 +55,10 @@ function SendList() {
 	return;
 }
 
-(function () {
+function initLadderLobbyTracking() {
 	setInterval(SendList, 1000);
-})();
+}
+initLadderLobbyTracking();
 
 function fnv1aHash(str) {
 	var hash = 2166136261; // FNV offset basis

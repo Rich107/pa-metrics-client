@@ -1,5 +1,5 @@
 // for a ranked game we have zero data in the lobby so gotta do it here, especially the lobbyid available only here
-setTimeout(function () {
+function initRankedGameData() {
 	if (model.gameOptions.isLadder1v1()) {
 		pnamelist2 = {};
 		var test = model.playerListState();
@@ -46,7 +46,8 @@ setTimeout(function () {
 	} else {
 		console.log("not ladder uwu");
 	}
-}, 1000);
+}
+setTimeout(initRankedGameData, 1000);
 my_current_time = 0;
 var EcoData = [];
 var TimeInSeconds = 0;
@@ -89,11 +90,11 @@ function toUTCStringAlternative() {
 
 var allIds = [];
 
-(function () {
+function initMainGameLoop() {
 	function dowhile() {
 		// so the dowhile do everything ? why is it in a func idk
 
-		var automation = function () {
+		var automation = function automationFunction() {
 			// automation is for getting Units ids/numbers
 			var planetnum = model.planetListState().planets.length - 1; //getNumberOfPlanets
 			for (var i = 0; i < planetnum; i++) {
@@ -114,7 +115,7 @@ var allIds = [];
 				//for each planet for my current player get his units type and ids
 				PlayerArmys[0][planetid] = worldView
 					.getArmyUnits(armyindex, planetid)
-					.then(function () {
+					.then(function processArmyUnits() {
 						var myData = this;
 						myData2[myi] = JSON.stringify(myData["result"]);
 						myi += 1;
@@ -229,10 +230,11 @@ var allIds = [];
 		_.delay(dowhile, 5000);
 	}
 	dowhile();
-})();
+}
+initMainGameLoop();
 
 // from flubb's superstats mod, same code as him for apm
-self.apmCounter = setInterval(function () {
+function updateAPM() {
 	var sum = 0;
 	keypressed.push(self.keyPressCount);
 	if (keypressed.length <= 60) {
@@ -248,21 +250,28 @@ self.apmCounter = setInterval(function () {
 
 	self.apm = 60 * 1000 * (self.keyPressCount / self.apmFrequency);
 	self.keyPressCount = 0;
-}, self.apmFrequency);
+}
+self.apmCounter = setInterval(updateAPM, self.apmFrequency);
 
 self.init = function () {
-	$(document).bindFirst("keyup", function (e) {
+	function handleKeyup(e) {
 		//console.log("CLICK1");
 		self.keyPressCount += 1;
-	});
-	$("holodeck").bindFirst("mousedown", function (e) {
+	}
+	
+	function handleHolodeckMousedown(e) {
 		//console.log("CLICK2");
 		self.keyPressCount += 1;
-	});
-	$(document).bindFirst("mousedown", function (e) {
+	}
+	
+	function handleDocumentMousedown(e) {
 		//console.log("CLICK3");
 		self.keyPressCount += 1;
-	});
+	}
+	
+	$(document).bindFirst("keyup", handleKeyup);
+	$("holodeck").bindFirst("mousedown", handleHolodeckMousedown);
+	$(document).bindFirst("mousedown", handleDocumentMousedown);
 };
 
 $(document).ready(this.init);

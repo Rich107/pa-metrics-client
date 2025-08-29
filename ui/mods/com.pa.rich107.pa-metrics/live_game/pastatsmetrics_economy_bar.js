@@ -47,6 +47,7 @@ function SendEco() {
 	return;
 }
 
-(function () {
+function initEconomyTracking() {
 	setInterval(SendEco, 1000);
-})();
+}
+initEconomyTracking();

@@ -11,15 +11,16 @@ function SendGameOver() {
 	return;
 }
 
-(function () {
+function initGameOverTracking() {
 	console.log("pastatsmetrics game over data message 2");
 	setInterval(SendGameOver, 1000);
-})();
+}
+initGameOverTracking();
 
 lobby_id = localStorage.lobbyId;
 
 function superStatsReported() {}
-(function () {
+function initSuperStatsButton() {
 	console.log("pastatsmetrics game over data message 3");
 	model.goToSuperStats = function () {
 		engine.call(
@@ -32,4 +33,5 @@ function superStatsReported() {}
 		.before(
 			'<div data-bind="visible:superStatsReported"><input type="button" value="PA STATS METRICS" data-bind="click:goToSuperStats" /></div>',
 		);
-})();
+}
+initSuperStatsButton();
