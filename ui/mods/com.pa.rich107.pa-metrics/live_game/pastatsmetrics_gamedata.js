@@ -39,10 +39,10 @@ setTimeout(function () {
 		var report_string = JSON.stringify(ranked_report);
 		console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
 		console.log("LOBBY DATA : ", ranked_report);
-		$.post(
-			"https://ggleaderboards.com/api/v1/pa-ame-stats/lobbydata",
-			report_string,
-		);
+		// $.post(
+		// 	"https://ggleaderboards.com/api/v1/pa-ame-stats/lobbydata",
+		// 	report_string,
+		// );
 	} else {
 		console.log("not ladder uwu");
 	}
@@ -206,10 +206,10 @@ var allIds = [];
 				`SENDING ${model.gameOptions.isLadder1v1()} LOBBY DATA FROM: gamedata.js`,
 			);
 			console.log("LOBBY DATA : ", report_string);
-			$.post(
-				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
-				report_string,
-			);
+			// $.post(
+			// 	"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
+			// 	report_string,
+			// );
 		}
 
 		if (
@@ -221,10 +221,10 @@ var allIds = [];
 			console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
 			console.log("we have gameover data");
 			console.log("LOBBY DATA : ", report_string);
-			$.post(
-				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
-				report_string,
-			);
+			// $.post(
+			// 	"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
+			// 	report_string,
+			// );
 		}
 		_.delay(dowhile, 5000);
 	}
