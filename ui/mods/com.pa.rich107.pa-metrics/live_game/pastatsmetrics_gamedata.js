@@ -41,7 +41,7 @@ setTimeout(function () {
 		console.log("LOBBY DATA : ", ranked_report);
 		$.post(
 			"https://ggleaderboards.com/api/v1/pa-ame-stats/lobbydata",
-			rseport_string,
+			report_string,
 		);
 	} else {
 		console.log("not ladder uwu");
