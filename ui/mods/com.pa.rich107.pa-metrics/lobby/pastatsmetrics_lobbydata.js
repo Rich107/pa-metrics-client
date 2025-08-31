@@ -80,7 +80,6 @@ function SendList() {
 			player_list: JSON.stringify(player_list),
 			planets_biomes: model.planetBiomes(),
 		};
-		var report_string = JSON.stringify(report); // data send as a string containing a JSON
 		var ls_specs = model.spectators();
 		var uberid = model.uberId();
 
@@ -94,10 +93,10 @@ function SendList() {
 		if (!current_player_is_spectating) {
 			// IF NOT then we can send the lobbydata
 			console.log("SENDING LOBBY DATA FROM: lobbydata.js");
-			console.log("LOBBY DATA : ", report_string);
+			console.log("LOBBY DATA : ", report);
 			$.post(
 				"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
-				report_string
+				report
 			);
 		}
 	}
