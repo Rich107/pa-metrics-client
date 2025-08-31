@@ -39,10 +39,10 @@ function initRankedGameData() {
 		var report_string = JSON.stringify(ranked_report);
 		console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
 		console.log("LOBBY DATA : ", ranked_report);
-		// $.post(
-		// 	"https://ggleaderboards.com/api/v1/pa-ame-stats/lobbydata",
-		// 	report_string,
-		// );
+		$.post(
+			"https://ggleaderboards.com/api/v1/pa-ame-stats/lobbydata",
+			report_string
+		);
 	} else {
 		console.log("not ladder uwu");
 	}
@@ -203,15 +203,16 @@ function initMainGameLoop() {
 		//console.log("DEV DEBUG : ", report);
 		var report_string = JSON.stringify(report);
 
+        console.log("REPORT STRING", report_string);
 		if (!model.paused() && !model.isSpectator() && !model.showLanding()) {
 			console.log(
 				"SENDING " + model.gameOptions.isLadder1v1() + " LOBBY DATA FROM: gamedata.js"
 			);
 			console.log("LOBBY DATA : ", report_string);
-			// $.post(
-			// 	"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
-			// 	report_string,
-			// );
+			$.post(
+				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
+				report_string
+			);
 		}
 
 		if (
@@ -223,10 +224,10 @@ function initMainGameLoop() {
 			console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
 			console.log("we have gameover data");
 			console.log("LOBBY DATA : ", report_string);
-			// $.post(
-			// 	"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
-			// 	report_string,
-			// );
+			$.post(
+				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
+				report_string
+			);
 		}
 		_.delay(dowhile, 5000);
 	}

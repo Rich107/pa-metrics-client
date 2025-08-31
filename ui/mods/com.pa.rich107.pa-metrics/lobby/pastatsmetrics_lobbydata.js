@@ -95,10 +95,10 @@ function SendList() {
 			// IF NOT then we can send the lobbydata
 			console.log("SENDING LOBBY DATA FROM: lobbydata.js");
 			console.log("LOBBY DATA : ", report_string);
-			// $.post(
-			// 	"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
-			// 	report_string,
-			// );
+			$.post(
+				"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
+				report_string
+			);
 		}
 	}
 	return;
