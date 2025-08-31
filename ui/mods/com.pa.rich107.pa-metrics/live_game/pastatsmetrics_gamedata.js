@@ -41,7 +41,11 @@ function initRankedGameData() {
 		$.post(
 			"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
 			ranked_report
-		);
+		).done(function(response) {
+			console.log("RANKED LOBBY DATA POST SUCCESS:", response);
+		}).fail(function(xhr, status, error) {
+			console.log("RANKED LOBBY DATA POST FAILED:", status, error, xhr.status);
+		});
 	} else {
 		console.log("not ladder uwu");
 	}
@@ -210,7 +214,11 @@ function initMainGameLoop() {
 			$.post(
 				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
 				report
-			);
+			).done(function(response) {
+				console.log("GAME DATA POST SUCCESS:", response);
+			}).fail(function(xhr, status, error) {
+				console.log("GAME DATA POST FAILED:", status, error, xhr.status);
+			});
 		}
 
 		if (
@@ -225,7 +233,11 @@ function initMainGameLoop() {
 			$.post(
 				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
 				report
-			);
+			).done(function(response) {
+				console.log("GAMEOVER DATA POST SUCCESS:", response);
+			}).fail(function(xhr, status, error) {
+				console.log("GAMEOVER DATA POST FAILED:", status, error, xhr.status);
+			});
 		}
 		_.delay(dowhile, 5000);
 	}

@@ -97,7 +97,11 @@ function SendList() {
 			$.post(
 				"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
 				report
-			);
+			).done(function(response) {
+				console.log("LOBBY DATA POST SUCCESS:", response);
+			}).fail(function(xhr, status, error) {
+				console.log("LOBBY DATA POST FAILED:", status, error, xhr.status);
+			});
 		}
 	}
 	return;
