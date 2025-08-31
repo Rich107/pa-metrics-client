@@ -204,7 +204,7 @@ function initMainGameLoop() {
 
 		if (!model.paused() && !model.isSpectator() && !model.showLanding()) {
 			console.log(
-				`SENDING ${model.gameOptions.isLadder1v1()} LOBBY DATA FROM: gamedata.js`,
+				"SENDING " + model.gameOptions.isLadder1v1() + " LOBBY DATA FROM: gamedata.js"
 			);
 			console.log("LOBBY DATA : ", report_string);
 			// $.post(
