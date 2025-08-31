@@ -113,6 +113,7 @@ function initMainGameLoop() {
 
 			for (var planetid = 0; planetid < planetnum; planetid++) {
 				//for each planet for my current player get his units type and ids
+                console.log("PlayerArmys", PlayerArmys);
 				PlayerArmys[0][planetid] = worldView
 					.getArmyUnits(armyindex, planetid)
 					.then(function processArmyUnits() {
