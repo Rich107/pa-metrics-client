@@ -23,10 +23,7 @@ function superStatsReported() {}
 function initSuperStatsButton() {
 	console.log("pastatsmetrics game over data message 3");
 	model.goToSuperStats = function () {
-		engine.call(
-			"web.launchPage",
-			"https://ggleaderboards.com/api/v1/pa-game-stats/charts=" + lobby_id,
-		);
+		engine.call("web.launchPage", "https://ggleaderboards.com/api/v1/pa-game-stats/charts=" + lobby_id);
 	};
 	$('input[value="REVIEW"]')
 		.parent()
