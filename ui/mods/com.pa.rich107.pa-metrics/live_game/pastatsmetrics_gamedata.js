@@ -39,7 +39,7 @@ function initRankedGameData() {
 		console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
 		console.log("LOBBY DATA : ", ranked_report);
 		$.post(
-			"https://ggleaderboards.com/api/v1/pa-ame-stats/lobbydata",
+			"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
 			ranked_report
 		);
 	} else {
