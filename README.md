@@ -96,4 +96,14 @@ This is the location of the data folder for things like logs and client mods
 C:\Users\BlackBox\AppData\Local\Uber Entertainment\Planetary Annihilation
 ```
 
+Process to setup client by hand without the manager:
+- Copy the file in the path above with the correct user name
+- The file needs to he located in:
+- client_mods
+    - something for a folder name
+        - ui (folder)
+            - mods
+                -  pastatsmetrics
+        - modinfo.json
+- You also need to enable the mod in the community mod manager
 
