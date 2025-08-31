@@ -27,8 +27,6 @@ function initSuperStatsButton() {
 	};
 	$('input[value="REVIEW"]')
 		.parent()
-		.before(
-			'<div data-bind="visible:superStatsReported"><input type="button" value="PA STATS METRICS" data-bind="click:goToSuperStats" /></div>',
-		);
+		.before('<div data-bind="visible:superStatsReported"><input type="button" value="PA STATS METRICS" data-bind="click:goToSuperStats" /></div>');
 }
 initSuperStatsButton();
