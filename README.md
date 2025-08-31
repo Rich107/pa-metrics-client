@@ -89,3 +89,11 @@ I think this is done in the steam luncher?
 ``` bash
 --coherent_port=9999
 ```
+
+
+This is the location of the data folder for things like logs and client mods
+``` bash
+C:\Users\BlackBox\AppData\Local\Uber Entertainment\Planetary Annihilation
+```
+
+
