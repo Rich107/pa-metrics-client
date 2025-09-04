@@ -36,11 +36,12 @@ function initRankedGameData() {
 			uber_id: model.uberId(),
 			the_date: toUTCStringAlternative(),
 		};
+		var report_string = JSON.stringify(ranked_report);
 		console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
-		console.log("LOBBY DATA : ", ranked_report);
+		console.log("LOBBY DATA : ", report_string);
 		$.post(
 			"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
-			ranked_report
+			report_string
 		).done(function(response) {
 			console.log("RANKED LOBBY DATA POST SUCCESS:", response);
 		}).fail(function(xhr, status, error) {
@@ -205,21 +206,22 @@ function initMainGameLoop() {
 		};
 		//console.log("DEV DEBUG : ", report);
 
-        console.log("REPORT", report);
-		if (!model.paused() && !model.isSpectator() && !model.showLanding()) {
-			console.log(
-				"SENDING " + model.gameOptions.isLadder1v1() + " LOBBY DATA FROM: gamedata.js"
-			);
-			console.log("LOBBY DATA : ", report);
-			$.post(
-				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
-				report
-			).done(function(response) {
-				console.log("GAME DATA POST SUCCESS:", response);
-			}).fail(function(xhr, status, error) {
-				console.log("GAME DATA POST FAILED:", status, error, xhr.status);
-			});
-		}
+	var report_string = JSON.stringify(report);
+        console.log("REPORT", report_string);
+	if (!model.paused() && !model.isSpectator() && !model.showLanding()) {
+		console.log(
+			"SENDING " + model.gameOptions.isLadder1v1() + " LOBBY DATA FROM: gamedata.js"
+		);
+		console.log("LOBBY DATA : ", report_string);
+		$.post(
+			"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
+			report_string
+		).done(function(response) {
+			console.log("GAME DATA POST SUCCESS:", response);
+		}).fail(function(xhr, status, error) {
+			console.log("GAME DATA POST FAILED:", status, error, xhr.status);
+		});
+	}
 
 		if (
 			!_.isEmpty(GameOverData[1]) &&
@@ -227,17 +229,17 @@ function initMainGameLoop() {
 			model.isSpectator()
 		) {
 			gameover_sent += 1;
-			console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
-			console.log("we have gameover data");
-			console.log("LOBBY DATA : ", report);
-			$.post(
-				"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
-				report
-			).done(function(response) {
-				console.log("GAMEOVER DATA POST SUCCESS:", response);
-			}).fail(function(xhr, status, error) {
-				console.log("GAMEOVER DATA POST FAILED:", status, error, xhr.status);
-			});
+		console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
+		console.log("we have gameover data");
+		console.log("LOBBY DATA : ", report_string);
+		$.post(
+			"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
+			report_string
+		).done(function(response) {
+			console.log("GAMEOVER DATA POST SUCCESS:", response);
+		}).fail(function(xhr, status, error) {
+			console.log("GAMEOVER DATA POST FAILED:", status, error, xhr.status);
+		});
 		}
 		_.delay(dowhile, 5000);
 	}
