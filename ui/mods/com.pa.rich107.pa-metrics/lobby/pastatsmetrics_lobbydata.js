@@ -93,15 +93,16 @@ function SendList() {
 		if (!current_player_is_spectating) {
 			// IF NOT then we can send the lobbydata
 			console.log("SENDING LOBBY DATA FROM: lobbydata.js");
-			console.log("LOBBY DATA : ", report);
-			$.post(
-				"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
-				report
-			).done(function(response) {
-				console.log("LOBBY DATA POST SUCCESS:", response);
-			}).fail(function(xhr, status, error) {
-				console.log("LOBBY DATA POST FAILED:", status, error, xhr.status);
-			});
+		var report_string = JSON.stringify(report);
+		console.log("LOBBY DATA : ", report_string);
+		$.post(
+			"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
+			report_string
+		).done(function(response) {
+			console.log("LOBBY DATA POST SUCCESS:", response);
+		}).fail(function(xhr, status, error) {
+			console.log("LOBBY DATA POST FAILED:", status, error, xhr.status);
+		});
 		}
 	}
 	return;
