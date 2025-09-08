@@ -29,7 +29,7 @@ function SendEco() {
 	var MetalCurrentMetal = model.currentMetal();
 	var MetalMaxMetal = model.maxMetal();
 
-	console.log("send eco data economy_bar.js");
+	// console.log("send eco data economy_bar.js");
 	api.Panel.message(api.Panel.parentId, "EcoDataAll", [
 		EnergyGain,
 		EnergyLoss,
