@@ -5,7 +5,7 @@
 //console.log("hello");
 //var my_lobbyid = "";
 model.my_lobbyid = ko.observable(-1).extend({ session: "lobbyId" });
-console.log("lobby id from session: ladderlobbydata.js", model.my_lobbyid());
+// console.log("lobby id from session: ladderlobbydata.js", model.my_lobbyid());
 
 function SendList() {
 	var player_list = {};
@@ -32,7 +32,7 @@ function SendList() {
 		if (isRanked) {
 			model.my_lobbyid(my_id);
 		}
-		console.log("pastatsmetrics sending ranked_lobby data");
+		// console.log("pastatsmetrics sending ranked_lobby data");
 		var report = {
 			is_lobby_data: true,
 			lobby_id: model.my_lobbyid(),
@@ -49,7 +49,7 @@ function SendList() {
 			uber_id: model.uberId(),
 		};
 		var report_string = JSON.stringify(report);
-		console.log("LOBBY DATA from ladderlobbydata.js: ", report_string);
+		// console.log("LOBBY DATA from ladderlobbydata.js: ", report_string);
 		//$.post("https://pastatsmetrics.com/pastats/api/lobbydata", report_string);
 	}
 	return;

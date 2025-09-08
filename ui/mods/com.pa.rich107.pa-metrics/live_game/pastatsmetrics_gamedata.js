@@ -37,18 +37,18 @@ function initRankedGameData() {
 			the_date: toUTCStringAlternative(),
 		};
 		var report_string = JSON.stringify(ranked_report);
-		console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
-		console.log("LOBBY DATA : ", report_string);
+		// console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
+		// console.log("LOBBY DATA : ", report_string);
 		$.post(
 			"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
 			report_string
 		).done(function(response) {
-			console.log("RANKED LOBBY DATA POST SUCCESS:", response);
+			// console.log("RANKED LOBBY DATA POST SUCCESS:", response);
 		}).fail(function(xhr, status, error) {
-			console.log("RANKED LOBBY DATA POST FAILED:", status, error, xhr.status);
+			// console.log("RANKED LOBBY DATA POST FAILED:", status, error, xhr.status);
 		});
 	} else {
-		console.log("not ladder uwu");
+		// console.log("not ladder uwu");
 	}
 }
 setTimeout(initRankedGameData, 1000);
@@ -117,7 +117,7 @@ function initMainGameLoop() {
 
 			for (var planetid = 0; planetid < planetnum; planetid++) {
 				//for each planet for my current player get his units type and ids
-                console.log("PlayerArmys", PlayerArmys);
+                // console.log("PlayerArmys", PlayerArmys);
 				PlayerArmys[0][planetid] = worldView
 					.getArmyUnits(armyindex, planetid)
 					.then(function processArmyUnits() {
@@ -129,7 +129,7 @@ function initMainGameLoop() {
 			myi = 0;
 		};
 		automation();
-		//console.log("SENDING DATA");
+		// console.log("SENDING DATA");
 
 		var gameState = JSON.stringify(GameOverData[0]);
 		var gameVictors = GameOverData[1];
@@ -207,19 +207,19 @@ function initMainGameLoop() {
 		//console.log("DEV DEBUG : ", report);
 
 	var report_string = JSON.stringify(report);
-        console.log("REPORT", report_string);
+        // console.log("REPORT", report_string);
 	if (!model.paused() && !model.isSpectator() && !model.showLanding()) {
-		console.log(
+		// console.log(
 			"SENDING " + model.gameOptions.isLadder1v1() + " LOBBY DATA FROM: gamedata.js"
 		);
-		console.log("LOBBY DATA : ", report_string);
+		// console.log("LOBBY DATA : ", report_string);
 		$.post(
 			"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
 			report_string
 		).done(function(response) {
-			console.log("GAME DATA POST SUCCESS:", response);
+			// console.log("GAME DATA POST SUCCESS:", response);
 		}).fail(function(xhr, status, error) {
-			console.log("GAME DATA POST FAILED:", status, error, xhr.status);
+			// console.log("GAME DATA POST FAILED:", status, error, xhr.status);
 		});
 	}
 
@@ -229,16 +229,16 @@ function initMainGameLoop() {
 			model.isSpectator()
 		) {
 			gameover_sent += 1;
-		console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
-		console.log("we have gameover data");
-		console.log("LOBBY DATA : ", report_string);
+		// console.log("SENDING RANKED LOBBY DATA FROM: gamedata.js");
+		// console.log("we have gameover data");
+		// console.log("LOBBY DATA : ", report_string);
 		$.post(
 			"https://ggleaderboards.com/api/v1/pa-game-stats/gamedata",
 			report_string
 		).done(function(response) {
-			console.log("GAMEOVER DATA POST SUCCESS:", response);
+			// console.log("GAMEOVER DATA POST SUCCESS:", response);
 		}).fail(function(xhr, status, error) {
-			console.log("GAMEOVER DATA POST FAILED:", status, error, xhr.status);
+			// console.log("GAMEOVER DATA POST FAILED:", status, error, xhr.status);
 		});
 		}
 		_.delay(dowhile, 5000);

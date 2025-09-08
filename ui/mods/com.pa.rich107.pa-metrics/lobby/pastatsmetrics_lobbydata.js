@@ -4,7 +4,7 @@ model.lobbyId = ko.observable(-1).extend({ session: "lobbyId" });
 model.lobbyId(my_lobbyid);
 localStorage.lobbyId = model.lobbyId();
 
-console.log("lobby id from session lobbydata.js: ", model.lobbyId());
+// console.log("lobby id from session lobbydata.js: ", model.lobbyId());
 
 function SendList() {
 	// some code i might have copied somewhere or someone told me how to do this, it's the getPlayerList
@@ -92,16 +92,16 @@ function SendList() {
 
 		if (!current_player_is_spectating) {
 			// IF NOT then we can send the lobbydata
-			console.log("SENDING LOBBY DATA FROM: lobbydata.js");
+			// console.log("SENDING LOBBY DATA FROM: lobbydata.js");
 		var report_string = JSON.stringify(report);
-		console.log("LOBBY DATA : ", report_string);
+		// console.log("LOBBY DATA : ", report_string);
 		$.post(
 			"https://ggleaderboards.com/api/v1/pa-game-stats/lobbydata",
 			report_string
 		).done(function(response) {
-			console.log("LOBBY DATA POST SUCCESS:", response);
+			// console.log("LOBBY DATA POST SUCCESS:", response);
 		}).fail(function(xhr, status, error) {
-			console.log("LOBBY DATA POST FAILED:", status, error, xhr.status);
+			// console.log("LOBBY DATA POST FAILED:", status, error, xhr.status);
 		});
 		}
 	}
