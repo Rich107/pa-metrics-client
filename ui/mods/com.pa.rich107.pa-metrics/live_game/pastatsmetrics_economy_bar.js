@@ -47,7 +47,24 @@ function SendEco() {
 	return;
 }
 
+var ecoIntervalId;
+
 function initEconomyTracking() {
-	setInterval(SendEco, 1000);
+	ecoIntervalId = setInterval(SendEco, 1000);
 }
+
+function stopEconomyTracking() {
+	if (ecoIntervalId) {
+		clearInterval(ecoIntervalId);
+		ecoIntervalId = null;
+	}
+}
+
+function checkGameEnd() {
+	if (model.isSpectator()) {
+		stopEconomyTracking();
+	}
+}
+
 initEconomyTracking();
+setInterval(checkGameEnd, 500);
